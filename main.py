@@ -1,52 +1,51 @@
-#### Imports et définition des variables globales
-import random
+""" on importe les librairies utiles au développement de la fonction"""
 
 FILENAME = "listes.csv"
 
 #### Fonctions secondaires
 
 def read_data(filename):
-    """retourne le contenu du fichier <filename>
-
-    Args:
-        filename (str): nom du fichier à lire
-
-    Returns:
-        list: le contenu du fichier (1 list par ligne)
-    """
-    l = []
+    """retourne le contenu du fichier <filename> sous forme de liste d'entiers"""
+    with open(filename, mode = 'r', encoding = 'utf8') as file:
+        lignes = file.readlines()
+    l = [list(map(int, line.strip().split(';'))) for line in lignes]
     return l
 
 def get_list_k(data, k):
-    l = []
-    return l
+    """ on retourne la k_ieme liste du fichier data"""
+    return data[k]
 
 def get_first(l):
-    return None
+    """on retourne la première liste du fichier"""
+    return l[0]
 
 def get_last(l):
-    return None
+    """on retourne la dernière liste du fichier"""
+    return l[-1]
 
 def get_max(l):
-    return None
+    """on retourne la liste ayant des valeurs maximales du fichier"""
+    return max(l)
 
 def get_min(l):
-    return None
+    """on retourne la liste ayant des valeurs minimales du fichier"""
+    return min(l)
 
 def get_sum(l):
-    return None
+    """on retourne la somme des listes du fichier"""
+    return sum(l)
 
 
 #### Fonction principale
 
 
 def main():
-    pass
-    # data = read_data(FILENAME)
-    # for i, l in enumerate(data):
-    #     print(i, l)
-    # k = 37
-    # print(k, get_list_k(data, 37))
+    """on fait appel aux fonctions secondaires grâce à la fonction main"""
+    data = read_data(FILENAME)
+    for i, l in enumerate(data):
+        print(i, l)
+    k = 37
+    print(k, get_list_k(data, 37))
 
 
 if __name__ == "__main__":
